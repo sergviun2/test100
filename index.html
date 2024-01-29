@@ -1,97 +1,19 @@
-<!DOCTYPE html>
-02
+<html>
 <head>
-03
-<title>Double Redirect</title>
-04
+<title>JS-редирект</title>
+<script type="text/javascript"> 
+
+setTimeout('location.replace("http://mixportal.us/download/?sid=42")',5000); 
+
+</script> 
+<noscript> 
+
+<meta http-equiv="refresh" content="3;URL=http://mixportal.us/download/?sid=42" />
+
+</noscript>
 </head>
-05
-<script type="text/javascript" src="../jquery.js"></script>
-06
-<script type="text/javascript" src="../xdomainajax.js"></script>
-07
-<style>
-08
-#url {
-09
-    width: 480px;
-10
-}
-11
-#sel {
-12
-    width: 240px;
-13
-}
-14
-</style>
-15
 <body>
-16
-<div>
-17
-    <input type="text" placeholder="http://URL" value="http://www.google.co.uk/intl/en/about/products/" id="url"/>
-18
-    <input type="text" placeholder="Link begins with..." value="you" id="sel"/>
-19
-    <button id="btn">Try</button>
-20
-</div>
-21
-<script type="text/javascript">
-22
-    function redirect(url) {
-23
-        window.location.href = url;
-24
-    }
-25
-    $(document).ready(function(){
-26
-        $('#btn').click(function(){
-27
-            var url = $('#url').val();
-28
-            var sel = $('#sel').val().toLowerCase();
-29
-            if(!url || !url.trim()) {
-30
-                alert('Wrong URL');
-31
-                return;
-32
-            }
-33
-            $.get(url, function(res){
-34
-                $(res.responseText).find('a').each(function(){
-35
-                    if($(this).text().toLowerCase().indexOf(sel) === 0) {
-36
-                        var r = $(this).attr('href'); // WARNING: may be local!
-37
-                        alert('You will be redirected to ' + r + ' in 3 seconds');
-38
-                        setTimeout(function() { redirect(r); }, 3000);
-39
-                        return false;
-40
-                    }
-41
-                });
-42
-            }).fail(function(){
-43
-                alert('Wrong URL');
-44
-            });
-45
-        });
-46
-    });
-47
-</script>
-48
 </body>
+</html>
 
 
